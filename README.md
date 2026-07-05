@@ -22,6 +22,13 @@ don't cover it, it says so.
 
 ---
 
+## Demo
+
+▶️ **[Watch the 60-second walkthrough](./Gainwise_Sales_Copilot_Demo.mp4)** — asking
+suggested questions (answered in ~2s), clicking through to cited source excerpts,
+cross-language retrieval (中文 question → English catalog), the honest "not found"
+state, the Sources explorer, privacy policy, and dark mode.
+
 ## What it is
 
 Sales reps at a trading company get peppered with technical questions — MOQ,
