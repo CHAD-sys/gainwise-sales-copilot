@@ -57,25 +57,25 @@ DB), generation is DeepSeek, and the data layer is a single swappable module.
 
 ```mermaid
 flowchart LR
-    subgraph Ingest["🐍 Ingestion (once)"]
-        PDF[PDFs<br/>EN · 中文 · 日本語] --> EXTRACT[PyMuPDF<br/>text per page]
-        EXTRACT -->|empty page| OCR[Vision OCR<br/>fallback]
-        EXTRACT --> CHUNK[Chunk<br/>~300–500 tok]
+    subgraph Ingest["Ingestion (once)"]
+        PDF["PDFs (EN / ZH / JA)"] --> EXTRACT["PyMuPDF: text per page"]
+        EXTRACT -->|empty page| OCR["Vision OCR fallback"]
+        EXTRACT --> CHUNK["Chunk 300-500 tok"]
         OCR --> CHUNK
-        CHUNK --> INDEX[(chunks.json)]
+        CHUNK --> INDEX[("chunks.json")]
     end
 
-    subgraph Serve["⚙️ RAG API (Vite plugin)"]
-        Q[Question] --> BM25[BM25 retrieval<br/>CJK bigrams]
+    subgraph Serve["RAG API (Vite plugin)"]
+        Q["Question"] --> BM25["BM25 retrieval (CJK bigrams)"]
         INDEX --> BM25
-        BM25 --> GEN[DeepSeek<br/>grounded generation]
-        GEN --> ANS[Answer + real citations]
-        GEN -.no match.-> NF[Not found]
+        BM25 --> GEN["DeepSeek: grounded generation"]
+        GEN --> ANS["Answer + real citations"]
+        GEN -.no match.-> NF["Not found"]
     end
 
-    subgraph UI["💻 React UI"]
-        ANS --> BUBBLE[Answer bubble<br/>+ source chips]
-        BUBBLE --> PANEL[Source excerpt panel]
+    subgraph UI["React UI"]
+        ANS --> BUBBLE["Answer bubble + source chips"]
+        BUBBLE --> PANEL["Source excerpt panel"]
     end
 ```
 
