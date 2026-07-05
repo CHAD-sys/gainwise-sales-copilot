@@ -50,7 +50,7 @@ function Avatar({ role }: { role: "user" | "assistant" }) {
   }
   return (
     <div className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[var(--color-accent-soft)] text-[12px] font-bold text-[var(--color-accent-fg)]">
-      LK
+      AM
     </div>
   );
 }

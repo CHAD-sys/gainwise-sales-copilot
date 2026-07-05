@@ -4,7 +4,8 @@ import { TopBar, type View } from "./components/TopBar";
 import { KnowledgeBaseSidebar } from "./components/KnowledgeBaseSidebar";
 import { ChatPanel } from "./components/ChatPanel";
 import { SourcePanel } from "./components/SourcePanel";
-import { ProductionReadiness } from "./components/ProductionReadiness";
+import { SourcesExplorer } from "./components/SourcesExplorer";
+import { PrivacyPolicy } from "./components/PrivacyPolicy";
 import type { ChatMessage, Citation, KnowledgeSource, Language } from "./types";
 import { getSuggestedQuestions, ask, listSources } from "./mock/mockApi";
 import { cx } from "./lib/ui";
@@ -32,6 +33,7 @@ export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false); // mobile drawer
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false); // desktop fold
   const [active, setActive] = useState<ActiveCitation | null>(null);
+  const [privacyOpen, setPrivacyOpen] = useState(false);
 
   // Theme init + sync.
   useEffect(() => {
@@ -156,6 +158,7 @@ export default function App() {
             onViewChange={setView}
             dark={dark}
             onToggleDark={() => setDark((d) => !d)}
+            onOpenPrivacy={() => setPrivacyOpen(true)}
           />
         </div>
       </div>
@@ -251,10 +254,12 @@ export default function App() {
           </>
         ) : (
           <div className={cx("min-w-0 flex-1")}>
-            <ProductionReadiness />
+            <SourcesExplorer sources={sources} loading={loadingSources} />
           </div>
         )}
       </main>
+
+      <PrivacyPolicy open={privacyOpen} onClose={() => setPrivacyOpen(false)} />
     </div>
   );
 }

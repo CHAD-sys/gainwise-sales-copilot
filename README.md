@@ -49,7 +49,8 @@ DB), generation is DeepSeek, and the data layer is a single swappable module.
 - ⚡ **One-process dev.** The RAG API is mounted on the Vite dev server — no
   separate backend, proxy, or CORS. `npm run dev` runs everything.
 - 🌓 **Enterprise-grade UI.** Light/dark themes, keyboard-navigable, WCAG-minded
-  contrast, foldable knowledge-base sidebar, a "Production Readiness" panel.
+  contrast, foldable knowledge-base sidebar, a downloadable **Sources** explorer,
+  and a built-in privacy policy.
 - 🔌 **Runs without a key too.** No `DEEPSEEK_API_KEY`? It degrades to an
   extractive mode that still shows real citations.
 
@@ -155,7 +156,7 @@ server/
   api.ts                Vite plugin: /api/sources, /api/ask
 src/
   components/           TopBar · KnowledgeBaseSidebar · ChatPanel ·
-                        MessageBubble · SourcePanel · ProductionReadiness
+                        MessageBubble · SourcePanel · SourcesExplorer · PrivacyPolicy
   mock/mockApi.ts       the data-service client the UI depends on
   App.tsx               composition + state
 data/catalogue_pdfs/    ← your PDFs (git-ignored)

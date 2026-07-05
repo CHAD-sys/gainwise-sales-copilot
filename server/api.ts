@@ -4,6 +4,8 @@
 
 import type { Connect, Plugin, ViteDevServer } from "vite";
 import type { IncomingMessage, ServerResponse } from "node:http";
+import fs from "node:fs";
+import path from "node:path";
 import {
   loadIndex,
   indexReady,
@@ -54,6 +56,29 @@ export function ragApiPlugin(apiKey?: string): Plugin {
         "/api/sources",
         (_req: Connect.IncomingMessage, res: ServerResponse) => {
           send(res, 200, { sources: listAllSources() });
+        }
+      );
+
+      // Stream an ingested catalog for download. Only serves files that exist
+      // inside data/catalogue_pdfs/ (path-traversal safe via basename).
+      const PDF_DIR = path.join(process.cwd(), "data", "catalogue_pdfs");
+      server.middlewares.use(
+        "/api/source-file",
+        (req: Connect.IncomingMessage, res: ServerResponse) => {
+          const url = new URL(req.url ?? "", "http://localhost");
+          const requested = url.searchParams.get("f") ?? "";
+          const name = path.basename(requested); // strip any directory parts
+          const full = path.join(PDF_DIR, name);
+          if (!name || !full.startsWith(PDF_DIR) || !fs.existsSync(full)) {
+            return send(res, 404, { error: "File not available for download." });
+          }
+          res.statusCode = 200;
+          res.setHeader("Content-Type", "application/pdf");
+          res.setHeader(
+            "Content-Disposition",
+            `attachment; filename*=UTF-8''${encodeURIComponent(name)}`
+          );
+          fs.createReadStream(full).pipe(res);
         }
       );
 

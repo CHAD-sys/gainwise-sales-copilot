@@ -1,22 +1,24 @@
-import { MessagesSquare, ShieldCheck, Moon, Sun, CircleCheck } from "lucide-react";
+import { MessagesSquare, Library, Moon, Sun, CircleCheck, Lock } from "lucide-react";
 import { cx } from "../lib/ui";
 
-export type View = "copilot" | "readiness";
+export type View = "copilot" | "sources";
 
 export function TopBar({
   view,
   onViewChange,
   dark,
   onToggleDark,
+  onOpenPrivacy,
 }: {
   view: View;
   onViewChange: (v: View) => void;
   dark: boolean;
   onToggleDark: () => void;
+  onOpenPrivacy: () => void;
 }) {
   const tabs: { id: View; label: string; icon: typeof MessagesSquare }[] = [
     { id: "copilot", label: "Copilot", icon: MessagesSquare },
-    { id: "readiness", label: "Production Readiness", icon: ShieldCheck },
+    { id: "sources", label: "Sources", icon: Library },
   ];
 
   return (
@@ -67,6 +69,16 @@ export function TopBar({
       <div className="ml-auto flex items-center gap-2 sm:gap-3">
         <button
           type="button"
+          onClick={onOpenPrivacy}
+          className="grid h-9 w-9 place-items-center rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)] text-[var(--color-fg-muted)] transition-colors duration-150 hover:bg-[var(--color-surface-3)] hover:text-[var(--color-fg)]"
+          aria-label="Privacy policy"
+          title="Privacy policy"
+        >
+          <Lock className="h-[17px] w-[17px]" strokeWidth={1.9} aria-hidden />
+        </button>
+
+        <button
+          type="button"
           onClick={onToggleDark}
           className="grid h-9 w-9 place-items-center rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-2)] text-[var(--color-fg-muted)] transition-colors duration-150 hover:bg-[var(--color-surface-3)] hover:text-[var(--color-fg)]"
           aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
@@ -80,11 +92,11 @@ export function TopBar({
 
         <div className="hidden items-center gap-2 border-l border-[var(--color-border)] pl-3 lg:flex">
           <div className="grid h-8 w-8 place-items-center rounded-full bg-[var(--color-accent-soft)] text-[13px] font-bold text-[var(--color-accent-fg)]">
-            LK
+            AM
           </div>
           <div className="leading-tight">
             <div className="flex items-center gap-1 text-[12px] font-semibold text-[var(--color-fg)]">
-              Lok Kwan
+              Amine
               <CircleCheck
                 className="h-3.5 w-3.5 text-[var(--color-success)]"
                 strokeWidth={2.2}
