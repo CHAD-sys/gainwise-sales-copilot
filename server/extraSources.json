@@ -1,0 +1,24 @@
+[
+  {
+    "id": "src-pricing-policy",
+    "filename": "Internal_Pricing_Policy_2026.docx",
+    "type": "internal",
+    "language": "en",
+    "status": "indexed",
+    "kind": "Internal pricing policy",
+    "pages": 11,
+    "sizeLabel": "148 KB",
+    "updatedLabel": "Indexed (mock)"
+  },
+  {
+    "id": "src-wechat-clienta",
+    "filename": "WeChat_客户群_ClientA_2026-07.txt",
+    "type": "wechat",
+    "language": "zh",
+    "status": "indexed",
+    "kind": "WeChat export",
+    "pages": 34,
+    "sizeLabel": "512 KB",
+    "updatedLabel": "Indexed (mock)"
+  }
+]

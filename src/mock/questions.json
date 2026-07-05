@@ -1,0 +1,15 @@
+{
+  "_note": "Phase 2: only `suggested` is used (curated fixed prompts). Answers are now generated live by the RAG pipeline in server/. These questions are targeted at the REAL ingested catalogs in data/catalogue_pdfs/.",
+  "suggested": [
+    { "id": "q-moog-voltage", "language": "en", "text": "What voltage ratings are available for the Moog brushless DC motors?" },
+    { "id": "q-eaton-families", "language": "en", "text": "What product families does Eaton's electronics catalog cover?" },
+    { "id": "q-kawasaki-markets", "language": "en", "text": "Which industries do Kawasaki's hydraulic products serve?" },
+    { "id": "q-kawasaki-torque", "language": "en", "text": "What torque range do the Kawasaki hydraulic motors cover?" },
+    { "id": "q-payment-notfound", "language": "en", "text": "What are the standard payment terms and bulk-order discount?" },
+    { "id": "q-water-flood", "language": "zh", "text": "农村水利技术推广目录里有哪些洪水预报相关的产品？" },
+    { "id": "q-water-holder", "language": "zh", "text": "贵仁分布式洪水预报调度一体化平台是哪家单位持有的？" },
+    { "id": "q-eaton-rohs-zh", "language": "zh", "text": "Eaton 的电子元件符合 RoHS 环保标准吗？" },
+    { "id": "q-dyno-kw", "language": "ja", "text": "電気動力計の容量（kW）のラインナップを教えてください。" },
+    { "id": "q-dyno-warranty", "language": "ja", "text": "電気動力計の保証について教えてください。" }
+  ]
+}

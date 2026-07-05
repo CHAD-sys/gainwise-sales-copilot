@@ -1,0 +1,27 @@
+node_modules
+dist
+*.local
+.DS_Store
+.vite
+*.tsbuildinfo
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Local Claude Code settings
+.claude/settings.local.json
+
+# Third-party vendor catalogs — not redistributed. Drop your own PDFs here.
+data/catalogue_pdfs/*
+!data/catalogue_pdfs/.gitkeep
+!data/catalogue_pdfs/README.md
+
+# Generated RAG index (rebuild with `npm run ingest`)
+data/index/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
